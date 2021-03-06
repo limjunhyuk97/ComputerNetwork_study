@@ -29,6 +29,7 @@
   - **소켓 인터페이스 (socket interface)** : end system 간의 정보 전달의 방식에 대한 규칙 제공
   - **분산 애플리케이션 (distributed application)** : 데이터를 교환하는 많은 end-system을 포함하는 애플리케이션
   - **가장자리 라우터 (edge router)** : 특정 종단 시스템에서 다른 종단 시스템으로 이르는 경로 상에 위치한 첫 라우터
+  - **비활용 기간 (silent period)** : 할당된 회선이 이용되지 않는 기간 (circuit segment idle if not used by call)
 
 ## What is internet?
   
@@ -97,7 +98,24 @@
       - **Forwarding (packet 전달)**
         - 목적지까지 가려면 어떤 링크로 packet을 보내야 적절한지에 대한 정보를 담고 있는 forwarding table을 참고하여 packet 전달
       - **Routing (경로 설정)**
-        - 목적지까지의 최단경로를 계산하는 routing algorithm을 사용하는 routing protocol을 통해 forwarding table이 설정된다
-
+        - 목적지까지의 최단경로를 계산하는 routing algorithm을 사용하는 routing protocol을 통해 forwarding table이 설정된다   
 
   - **circuit switching(회선 교환)**
+    - 송신 end system과 목적지 end system 사이의 경로상 필요 자원(링크)를 dedicate한다.
+    - FDM(Frequency-division multiplexing) : 주파수 단위로 쪼개서 dedicate
+    - TDM(Time-division multiplexing) : 시간 단위로 쪼개서 dedicate
+    - TDM과 packet switching의 차이점 : TDM은 여전히 시간단위의 링크 독점이기에, silent-period가 있을 수 있다.
+
+  - **circuit switching 과 packet switching**
+
+ |circuit switching|packet switching|
+ |:---:|:---:|
+ |자원 독점 O|자원 독점 X|
+ |회선 접속 대기|packet의 출력 버퍼 대기|
+ |보장된 일정 전송률|일정 전송률이 보장되지 않음.(packet 단위의 전송) = 다수의 지속적 접속 상황이 아닌 bursty한 데이터 처리에 용이|
+ |데이터 전달 없어도 독점 (segment idle한, silent period 존재)|점거된 링크 존재하지 않음 (전송용량공유에서 효율적)|
+ |동시에 같은 목적지로 데이터 전달 불가능|동시에 같은 목적지로 데이터 전달 가능|
+ ||과도한 패킷 쏠림으로 queuing delay, packet loss 발생 가능하다|
+ 
+![circuit switch](https://user-images.githubusercontent.com/59442344/110194992-fe28d500-7e7e-11eb-8e71-ee1365904107.jpg)
+![packet switch](https://user-images.githubusercontent.com/59442344/110194995-008b2f00-7e7f-11eb-9834-edcb9edafbea.jpg)
