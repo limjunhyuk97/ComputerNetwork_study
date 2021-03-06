@@ -13,8 +13,9 @@
     - **데이터 센터(data center)** : 서버 컴퓨터와 네트워크 회선 등을 제공하는 시설
   - **패킷(packet)** : 송신 end-system이 보낼 데이터를 segment로 나눠서 header를 붙인 정보 패키지.
   - **패킷 스위치 / 교환기(packet switch)** : 패킷을 받고, 전달하는 역할을 한다. 
-    - **라우터(router)** : 네트워크 코어(network core)에서 사용
+    - **라우터(router)** : 네트워크 코어(network core)에서 사용, 입력 packet을 출력 link로 교환하는 일 수행
     - **링크 계층 스위치(link-layer-switch)** : 접속 네트워크(access network) 사용
+    - **출력 버퍼(output buffer)** : 패킷 스위치와 연결된 각 링크별로, 송신하려는 packet을 임시로 저장하는 역할 함.
   - **통신 링크(communication link)** : 네트워크 상의 호스트, 패킷 스위치들을 물리매체(physical media)를 통해 연결해주는 역할을 한다.
     - **전송률(transmission rate)** : 통신 링크의 초당 비트수. (단위 : bps, bit per second)
   - **경로(route / path)** : 데이터가 지나온 일련의 통신링크와, 패킷 스위치
@@ -74,6 +75,29 @@
   - **interconnected router**
   - **network of networks**
 
+![packet switch, circuit switch](https://user-images.githubusercontent.com/59442344/110193425-257ba400-7e77-11eb-9e0b-483f309706f1.jpg)
+
   - **packet switching(패킷 교환)**
+    - 송신 end system에서 보내고자 하는 데이터를 packet이라는 데이터 덩어리로 분할한다.
+    - 목적지 end system에서는 packet들을 다시 모아서 하나의 데이터 덩어리로 복원한다.
+    - 분할된 packet은 communication link와, packet switch를 지나서 목적지 end system에 도착한다.
+    - **packet / communication link**
+      - packet은 각 link의 transmission rate에 따라서, 최대 전송속도로 이동한다.
+      - 1 packet, N개 link, transmission rate : R bps, packet 단위 : L bit = 전송 시간 : N * L/R (sec)
+    - **packet / packet switch**
+      - **store and forward transmission**
+        - packet의 모든 비트를 router가 전송 받은 후(store), 다시 전송(forward) - 패킷 단위의 데이터 전송
+        - entire packet must arrive at router before it can be transmitted on next link
+    - **queuing delay / packet loss**
+      - arrival rate > transmission rate for a period of time : **packet will wait** to be transmitted, **can be lost**
+      - **queuing delay** : packet이 전송을 위해서 출력버퍼에서 대기하는 현상
+      - **packet loss** : 출력 버퍼의 공간이 가득 차서 packet의 정보가 폐기되는 현상
+    - **Forwarding / routing**
+      - nework-core's two key function 
+      - **Forwarding (packet 전달)**
+        - 목적지까지 가려면 어떤 링크로 packet을 보내야 적절한지에 대한 정보를 담고 있는 forwarding table을 참고하여 packet 전달
+      - **Routing (경로 설정)**
+        - 목적지까지의 최단경로를 계산하는 routing algorithm을 사용하는 routing protocol을 통해 forwarding table이 설정된다
+
 
   - **circuit switching(회선 교환)**
