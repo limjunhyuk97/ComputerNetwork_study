@@ -1,1 +1,1 @@
-# Let's dig into Computer Network principle!
+# Computer Network Principle
