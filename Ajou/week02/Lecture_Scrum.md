@@ -76,12 +76,28 @@
 ### 2. Per-connection end-end throughtput
   - 여러 연결의 경우, 연결당 종단간 처리율
   - min(Rc, Rs, R/N) : core link를 N개의 연결이 사용하므로, R/N이 core의 through-put
+    - 실제로는 서버 접속 링크인 Rs 또는, 클라이언트 접속 링크 Rc가 bottle-neck link일 경우가 많다.
+
+<img src="https://user-images.githubusercontent.com/59442344/110821833-ce8d2900-82d3-11eb-8444-a27400eabe47.jpg" width="60%" height="60%">
+
+
 
 # Protocol "layers"
+  - protocol은  전반적인 상호작용에서의 약속이다.
+  - protocol은 쓰임에 따라서 묶음으로 묶여있고, 그 묶음들은 layer(계층)을 이루고 있다.
+    - 각 계층은 내부에서 어떤 일을 수행하거나
+    - 하부계층의 서비스를 이용한다.
+  - protocol stack
+    - TCP/TP model (5 layer model)
+    - ISO / OSI model (7 layer model)
+  - layers
+  
+  
+## Internet protocol stack (TCP/IP model) , ISO / OSI reference model (OSI model)
+![tcp ip osi iso](https://user-images.githubusercontent.com/59442344/110824264-3f354500-82d6-11eb-92b3-4664b3c4cccc.jpg)
 
-## Internet protocol stack (TCP/IP model)
 
-## ISO / OSI reference model (OSI model)
+## Layers
 
 ## Encapsulation
 
