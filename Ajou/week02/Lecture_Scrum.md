@@ -4,7 +4,7 @@
   - **다운스트림(downstream)** : 서버나 원격호스트에서, 클라이언트나 로컬기기로 전송되는 데이터. 혹은 그 흐름.
   - **트래픽강도(traffic intensity)** : 큐잉 지연의 정도를 측정하는 측도. ( aL / R )
   - **종단간 처리율(end-end throughput)** : 종단에서 종단까지 단위시간당 전달되는 bit의 양
-  - **헤더(header)** : protocol layer을 지나감에 따라서 붙는 부가적인 정보가 담긴 
+  - **헤더 필드(header field)** : protocol layer을 지나감에 따라 붙는 부가적인 정보가 담긴 부분
 
 # Delay, Loss, Throughput in Networks
   - **Delay** : 지연
