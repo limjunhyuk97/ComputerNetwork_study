@@ -3,8 +3,8 @@
   - **업스트림(upstream)** : 클라이언트나 로컬기기에서, 서버나 원격 호스트로 보내지는 데이터. 혹은 그 흐름. 
   - **다운스트림(downstream)** : 서버나 원격호스트에서, 클라이언트나 로컬기기로 전송되는 데이터. 혹은 그 흐름.
   - **트래픽강도(traffic intensity)** : 큐잉 지연의 정도를 측정하는 측도. ( aL / R )
-  - **종단간 처리율(end-end throughput)** : 종단에서 종단까지 단위시간당 전달되는 bit의 
-
+  - **종단간 처리율(end-end throughput)** : 종단에서 종단까지 단위시간당 전달되는 bit의 양
+  - **헤더(header)** : protocol layer을 지나감에 따라서 붙는 부가적인 정보가 담긴 
 
 # Delay, Loss, Throughput in Networks
   - **Delay** : 지연
@@ -83,14 +83,14 @@
 
 
 # Protocol "layers"
-  - protocol은  전반적인 상호작용에서의 약속이다.
+  - protocol은 컴퓨터 간 통신을 위한 약속이다.
+  - Network상의 구성요소들은 자신의 역할에 맞는 프로토콜들에 대한 정보들을 답
   - protocol은 쓰임에 따라서 묶음으로 묶여있고, 그 묶음들은 layer(계층)을 이루고 있다.
     - 각 계층은 내부에서 어떤 일을 수행하거나
-    - 하부계층의 서비스를 이용한다.
-  - protocol stack
-    - TCP/TP model (5 layer model)
+    - 상부계층이 하부계층의 서비스에 의존한다.
+  - **protocol stack**
+    - TCP / IP model (5 layer model) : 인터넷 세계에서 표준으로 사용되는 네트워크 프로토콜이다.
     - ISO / OSI model (7 layer model)
-  - layers
   
   
 ## Internet protocol stack (TCP/IP model) , ISO / OSI reference model (OSI model)
@@ -98,8 +98,68 @@
 
 
 ## Layers
+  - 왜 layers로 나뉘어져 있는 것일까?
+    - **network protocol 설계에 대한 구조를 제공하기 위해서** 계층(layer)을 조직한다.
+      - 시스템 구성요소에 대해 논의하기 위한 구조화된 방법을 제공한다.
+    - 시스템의 구성요소의 유지보수, 갱신을 쉽게 해준다.
+      - 각자 특정 역할을 담당하는, 특정 계층에서의 변화가, 전체 시스템에 영향을 끼치지 않는다.
 
-## Encapsulation
+### 1. Application layer
+  - supporting network application
+    - **종단 시스템끼리의 정보 packet을 교환**하는데 이 protocol을 쓴다
+    - 정보 packet : **message**
+  - DNS HTTP SMTP FTP POP BitTorrent DHT
+    - **HTTP** protocol : 웹문서 요청과 전송
+    - **SMTP** protocol : 전자메일 전송
+    - **FTP** protocol : 종단 시스템 간의 파일 전송 
+
+### 2. transport layer
+  - process-process data transfer
+    - **클라이언트-서버 간의 Application layer message 전송에 관련**한 protocol을 담당한다.
+    - 정보 packet : **segment**
+  - UDP TCP SCTP DCCP
+    - **TCP** protocol : application에 연결지향형 서비스 제공 (전달 보장-신뢰성, 혼잡제어, 흐름제어 O)
+    - **UDP** protocol : application에 비연결지향형 서비스 제공 (전달 보장-신뢰성, 혼잡제어, 흐름제어 X)
+
+### 3. network layer
+  - routing of datagrams from source to destinatiion
+    - **UDP, TCP**에서 전달된 **segment와 함께, 목적지 주소를 전달받으면,** 목적지 transport layer로 전달하는 역할을 수행.
+    - **router(packet switch) 단위에서의 움직임 제어.**
+    - 정보 packet : **datagram**
+  - RIP OSPF BGP PIM-SM DVMRP ICMP IGMP IPv4 IPv6 DHCP
+    - **하나의 IP protocol과, 네트워크 별로 여러개 존재하는 Routing protocol**
+    - **IP** protocol : **IP datagram의 필드를 어떻게 정의**하는지와, **end-system과 router가 IP datagram 필드에 어떻게 동작**하는지 제시.
+    - **Routing** protocol : **datagram의 이동경로를 결정**한다.
+
+### 4. link layer
+  - data transfer between neighboring network elements
+    - **datagram을 현재 노드에서 다음 노드로 전달하는 역할을 수행한다.***
+    - **router와, link-layer-switch(packet switch) 단위에서 움직임 제어 : 하나의 network 요소 -> 옆 network 요소로의 이동**
+    - 정보 packet : **frame**
+  - ARP Ethernet IEEE 802.11
+
+### 5. physical layer
+  - bits "on the wire" 
+    - **frame 내부의 bit를 node에서 다음 node로 이동시키는 방법에 대한 protocol**
+
+### + presentation layer
+  - allow application to interpret meaning of data
+  - 교환되는 데이터 의미 해석을 위한 서비스 제공 (데이터 압축, 데이터 암호화)
+
+### + session layer
+  - synchronization, checkpointing, recovery of data exchange
+  - 데이터 교환의 경계와 동기화를 제공 (체킹포인트, 데이터 회복 수단 포함)
+
+## Encapsulation(캡슐화)
+  - 상위 계층에서 하위 계층으로 내려갈수록 앞에 정보(헤더)가 덕지덕지 붙어서 내려온다.
+  - 하위 계층에서 상위 계층으로 올라갈때는 앞의 정보들이 떨어지면서 올라간다.
+  - 각 layer에서 이루어지는 encapsulation
+    - 애플리케이션 계층 메시지
+    - 트랜스포트 계층 세그먼트
+    - 네트워크 계층 데이터그램
+    - 링크 계층 프레임
+    - 각 layer에서 **packet은 header field와, payload field(상위 계층 전달 packet)로 이루어진다.**
+<img src ="https://user-images.githubusercontent.com/59442344/110901487-bc4cd280-8347-11eb-9ae1-4ec43905b399.jpg" width = "80%" height = "80%">
 
 
 
@@ -119,7 +179,3 @@
 
 
 
-## Throughput
-
-
-# Protocol layers, service model
