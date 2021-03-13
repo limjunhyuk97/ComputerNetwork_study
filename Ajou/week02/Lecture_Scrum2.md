@@ -13,7 +13,9 @@
   - **socket interface (소켓 인터페이스)**
     - Process sends/receives messages to/from its socket
     - process에서 network로 message가 빠져나가고 들어오는 문이다.
-    - 정확하게는, **application layer와 transport layer간의 interface 이다.**   
+    - 정확하게는, **application layer와 transport layer간의 interface 이다.**
+  - **loss-tolerant application (손실 허용 애플리케이션)**
+    - 어느 정도의 데이터 손실을 감내할 수 있는 실시간, 저장 오디오/비디오 멀미티디어 애플리케이션.     
 
 
 
@@ -89,14 +91,20 @@
 # Transport service
 
 ## 1. Transport layer protocol service 종류
-  - Data Integrity
-  - Timing
-  - Throughtput
-  - Security
+  - **Data Integrity : 신뢰적 데이터 전송 , 데이터를 오류 없이 수신 프로세스에게로 전달한다.**
+  - **Timing : 송신자가 socket으로 내보내는 모든 비트가 수신자의 socket 내로 특정 시간대 안에 도달하도록 하는 것.**
+  - **Throughtput : 보장된 처리량을 요구하는 경우들에 있어 필요하다. (영상, 노래 수신)**
+  - **Security : 송신 프로세스가 보내는 정보를 암호화 시킬 수 있고, 해독할 수 있다.**
 ## 2. Transport layer protocol (TCP / UDP)
-  - TCP
-  - UDP
-
+  - **TCP**
+    - Reliable transport
+    - Flow control
+    - Congestion control
+    - Connection-oriented
+    - Does not provide: timing, minimum throughput guarantee, security
+  - **UDP**
+    - Unreliable
+    -  Does not provide: reliability, flow control, congestion control, timing, throughput guarantee, security, or connection setup   
 
 
 # Application layer protocol
