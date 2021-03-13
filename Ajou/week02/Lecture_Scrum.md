@@ -107,6 +107,7 @@
 ### 1. Application layer
   - supporting network application
     - **종단 시스템끼리의 정보 packet을 교환**하는데 이 protocol을 쓴다
+    - **process의 기능에 대한 책임을 지는 protocol이다! : 어떤 내용을, 어떤 형식으로, 언제, 어떻게 !**
     - 정보 packet : **message**
   - DNS HTTP SMTP FTP POP BitTorrent DHT
     - **HTTP** protocol : 웹문서 요청과 전송
@@ -116,6 +117,7 @@
 ### 2. transport layer
   - process-process data transfer
     - **클라이언트-서버 간의 Application layer message 전송에 관련**한 protocol을 담당한다.
+    - **message 전달의 책임을 지는 protocol : 정보 전달의 신뢰성, 처리량, 시간소요, 보안 !** 
     - 정보 packet : **segment**
   - UDP TCP SCTP DCCP
     - **TCP** protocol : application에 연결지향형 서비스 제공 (전달 보장-신뢰성, 혼잡제어, 흐름제어 O)
