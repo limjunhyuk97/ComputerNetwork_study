@@ -124,7 +124,7 @@
 ### 3. network layer
   - routing of datagrams from source to destinatiion
     - **UDP, TCP**에서 전달된 **segment와 함께, 목적지 주소를 전달받으면,** 목적지 transport layer로 전달하는 역할을 수행.
-    - **router(packet switch) 단위에서의 움직임 제어.**
+    - **router(packet switch), network 단위에서의 움직임 제어.**
     - 정보 packet : **datagram**
   - RIP OSPF BGP PIM-SM DVMRP ICMP IGMP IPv4 IPv6 DHCP
     - **하나의 IP protocol과, 네트워크 별로 여러개 존재하는 Routing protocol**
