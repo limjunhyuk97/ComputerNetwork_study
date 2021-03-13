@@ -75,6 +75,8 @@
     - 각 요청 객체들에 대한 새로운 연결들이 설정되고 유지되어야 한다. (TCP buffer의 할당과, TCP 변수들의 클라이언트, 서버에서의 유지)
     - 각 객체가 2RTT를 요구한다! (시간 많이 소요)
 
+![nonpersistenthttp](https://user-images.githubusercontent.com/59442344/111039833-7ee56380-8473-11eb-9e22-bce2cf8e0f3a.jpg)
+
 ### 2. persistent connection
   - Server leaves connection open after sending response
   - Subsequent HTTP messages between same client/server sent over open connection
