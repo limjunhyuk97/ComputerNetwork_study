@@ -32,7 +32,7 @@
   - a : **average packet arrival rate**
   - **Traffic intensity : aL/R , 0: delay small, 1: delay large, >1: delay infinite**
     - Traffic Intensity(트래픽 강도)는 큐잉 지연과 관련있는 지표이다!
-    - Traffic Intensity가 1에 가까워 질수록 지연이 무한에 가깝게 커진다.
+    - Traffic Intensity가 1에 가까워 질수록 지연이 무한에 가깝게 커진다. (수 분에 가깝게 커진다.)
 
 <img src = "https://user-images.githubusercontent.com/59442344/110810247-f3c86a00-82c8-11eb-9526-5c5e69583388.jpg" width="60%" height="60%">
 
