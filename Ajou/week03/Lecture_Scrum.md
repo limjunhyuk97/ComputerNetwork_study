@@ -56,12 +56,12 @@
 
 ### 2. Header line
   - **header field name : value**로 구성된다.
-  - **Connection:** : response를 보낸 후의 TCP 연결에 대한 내용을 담는다
-  - **Date:** : server가 객체를 담아서 응답을 보낸 시간을 의미한다.
-  - **Server:** : 어떤 server에 의해 만들어진 message인지를 명시한다
-  - **Last-Modified:** : 마지막으로 객체가 언제 수정되었는지를 나타낸다.
-  - **Content-Length:** : 송신하는 객체의 바이트수를 나타낸다.
-  - **Content-Type:** : 송신하는 객체가 어떤 타입인지를 나타낸다. + utf-8같은 utf형식까지 같이 보낸다.
+    - **Connection:** : response를 보낸 후의 TCP 연결에 대한 내용을 담는다 / keep-alive, close
+    - **Date:** : server가 객체를 담아서 응답을 보낸 시간을 의미한다.
+    - **Server:** : 어떤 server에 의해 만들어진 message인지를 명시한다
+    - **Last-Modified:** : 마지막으로 객체가 언제 수정되었는지를 나타낸다.
+    - **Content-Length:** : 송신하는 객체의 바이트수를 나타낸다.
+    - **Content-Type:** : 송신하는 객체가 어떤 타입인지를 나타낸다. + utf-8같은 utf형식까지 같이 보낸다.
 
 ### 3. entity body
   - 송신자에 회신할때, 요청받았던 객체를 담아두는 부분이다.
