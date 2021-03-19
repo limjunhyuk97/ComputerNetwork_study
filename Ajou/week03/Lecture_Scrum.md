@@ -3,7 +3,7 @@
   - Web cache (proxt server) : origin server를 대신해서, HTTP 요구를 충족하는 네트워크 개체
 
 # HTTP
-  - 2가지의 HTTP message에 대해서 들여다  . : request, response message
+  - 2가지의 HTTP message에 대해서 들여다보자. : request, response message
 
 ## HTTP request message (요청 메시지)
 
