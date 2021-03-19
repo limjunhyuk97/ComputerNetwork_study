@@ -48,10 +48,10 @@
     - **version field** : 어떤 HTTP 프로토콜 버전을 사용하는지 나타낸다.
     - **status code field** : 요청에 대한 성공여부를 나타낸다. (200, 404, ,,)
     - **phrase field** : 상태코드에 대한 설명을 글로 나타낸다. (OK, Not Found)
-      - **200 OK**
-      - **301 Moved Permanently**
-      - **400 Bad Request**
-      - **404 Not Found**
+      - **200 OK** : Request succeeded, request object later in this msg
+      - **301 Moved Permanently** : Requested object moved, new location specified later in this msg
+      - **400 Bad Request** : Request msg not understood by server
+      - **404 Not Found** : Request document not found on this server
       - **505 HTTP Version Not Supported**
 
 ### 2. Header line
