@@ -151,6 +151,22 @@
 
 ## 조건부 GET
 
+![조건부 GET](https://user-images.githubusercontent.com/59442344/111758751-2fbe8900-88e0-11eb-874a-36225969e959.png)
+
+  - Cache에 있는 정보가 update된 정보가 아니라면, origin server의 객체를 받아 client에게 전달하도록 한다.
+  - 어쨌든 origin server를 들리는 것이면 cache가 의미 없는 것 아닌가?
+    - update된 정보인지를 확인하기 위한 전달은 매우 작은 정보단위의 전달이기에, 과도한 traffic을 일으키지 않는다!
+
+### 조건부 GET의 과정
+  - **client -> web cahce 객체 요구** (이전에 전달된 적이 있는 특정 객체에 대한 정보일 경우..)
+  - **web cache -> server 객체의 update 상황 확인** (If-Modified-Since : ???)
+   - web cahce에 사본이 저장된 이후로 **update가 이루어지지 않았다. (304 Not Modified)**
+     - server에서 **entity body가 비어있는 회신**이 돌아옴 
+     - web cache에 있는 객체 사본을 client에게 전달
+   - web cache에 사본이 저장된 이후로 **update가 이루어진적이 있다. (200 OK)**
+     - server에서 **entity body에 최신의 정보를 포함하는 회신**이 돌아옴
+     - web cache 객체를 최신 정보로 갱신
+     - web cache를 거쳐서 client에게 객체 전달
 
 
 
