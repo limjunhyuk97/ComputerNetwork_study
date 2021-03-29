@@ -68,12 +68,13 @@
 
 ![CDN works](https://user-images.githubusercontent.com/59442344/112820838-feed0980-90c0-11eb-8cd9-56239927d1fa.png)
 
-  - *service server*에 동영상 요구
-  - *service server*에서 동영상이 위치한 *video가 위치한 server*의 url 제공
-  - url에 대해서 local DNS에 질의
-  - local DNS가 url 위치에 대한 질의를 *video가 위치한 server의 책임 DNS server*로 보냄 (**책임 DNS 서버가 CDN 서비스 네트워크로 우회시켜버림!**)
-  - *video위치한 server의 책임 DNS server*가 *video가 위치한 server의 IP 주소* 대신, *CDN 서비스 server의 호스트명*을 알려줌
-  - *CDN 서비스 server의 호스트명*에 대해서 local DNS에 질의
-  - local DNS가 *CDN 서비스의 사설 DNS 구조*로 질의를 한 끝에 *CDN 서비스 server의 IP 주소*를 알아냄
-  - local DNS가 이 IP 주소를 client에게 건네줌
-  - client는 이 IP 주소와의 Dash 연결을 통해 비디오를 받게 된다.
+1. *service server*에 동영상 요구
+2. *service server*에서 동영상이 위치한 *video가 위치한 server*의 url 제공
+3. url에 대해서 local DNS에 질의
+4. local DNS가 url 위치에 대한 질의를 *video가 위치한 server의 책임 DNS server*로 보냄
+(**동영상이 위치한 server의 책임 DNS 서버가 CDN 서비스 네트워크로 우회시켜버림!**)
+5. *video위치한 server의 책임 DNS server*가 *video가 위치한 server의 IP 주소* 대신, *CDN 서비스 server의 호스트명*을 알려줌
+6. *CDN 서비스 server의 호스트명*에 대해서 local DNS에 질의
+7. local DNS가 *CDN 서비스의 사설 DNS 구조*로 질의를 한 끝에 *CDN 서비스 server의 IP 주소*를 알아냄
+8. local DNS가 이 IP 주소를 client에게 건네줌
+9. client는 이 IP 주소와의 Dash 연결을 통해 비디오를 받게 된다.
