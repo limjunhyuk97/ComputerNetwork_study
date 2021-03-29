@@ -82,15 +82,15 @@
 
  |SMTP|HTTP|
  |:---:|:---:|
- |원칙적으로 pull protocol이다.(정보를 받기 위한)|원칙적으로 push protocol이다.(정보를 보내기 위한)|
+ |원칙적으로 push protocol이다.(정보를 보내기 위한)|원칙적으로 pull protocol이다.(정보를 받기 위한)|
  |message로 전달되는 내용이 ASCII format 이어야 한다.|이러한 제약이 없다.|
  |ASCII가 아닌 문자나, 멀티미디어 파일에 대한 별도의 encoding이 필요하다.|이러한 제약이 없다.|
  |하나의 message, 여러개의 object 캡슐화 가능.|하나의 message, 하나의 object 캡슐화 가능.|
 
 ### 3. SMTP format
 <img src="https://user-images.githubusercontent.com/59442344/112801243-9cd5d980-90ab-11eb-8bf8-f831c887d456.png">
-   - 우리가 사용하는 실제 우편과 유사하게 생겼다.
-   - envelope의 SMTP MAIL FROM, RCPT TO와 header의 From, To는 서로 다른 것이다.
+  - 우리가 사용하는 실제 우편과 유사하게 생겼다.
+  - envelope의 SMTP MAIL FROM, RCPT TO와 header의 From, To는 서로 다른 것이다.
 
 ### 4. MIME
   - SMTP가 ASCII 밖에 다루지 못하는 문제를 해결하기 위해 등장했다.
