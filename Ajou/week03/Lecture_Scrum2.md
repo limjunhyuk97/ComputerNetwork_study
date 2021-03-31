@@ -116,9 +116,8 @@
 
 ![DNS query](https://user-images.githubusercontent.com/59442344/112010176-6b6c8380-8b6a-11eb-8386-1862826d3ac0.png)
 
-#### 1. Iterative query : 직접 mapping 정보를 얻기위해서 보내는 query
-#### 2. Recursive query : 본인을 대신하여 mapping 정보를 얻도록 보내는 query
-
+#### 1. Iterative query : LDNS가 직접 mapping 정보를 얻기 위해 보내는 query
+#### 2. Recursive query : LDNS가 mapping 부분을 얻기 위해 간접적으로 보내는 query
 ### DNS caching
   - **매번 client가** local DNS server를 통해서 mapping정보에 대한 **query를** root server부터, authoritative server까지 **날리는 과정이 반복되지는 않는다.**
   - **DNS server에 대한 응답들은, local name server에 단기적으로 저장**될 수 있다.
