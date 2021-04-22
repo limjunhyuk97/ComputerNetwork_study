@@ -119,7 +119,7 @@
   - (key, value) 쌍 
     - **file key : file name를 Hash 해서 만든 고유 값**
     - **file value : [file이 실제 존재하는 peer 기기의 IP 주소] + [peer 기기 상의 port number]** 로 이루어져 있다
-  - identifier 값에 key 값 assing
+  - identifier 값에 key 값 assign
     - **peer identifier와 file key 값은 같은 범위 내의 값이어야 한다.**
     - key 값과 같은 값의 identifier값을 같는 peer에 key, value 쌍을 할당한다.
     - key 값과 같은 값이 없다면, key 값보다 큰 값중 가장 작은 identifier 값을 같는 peer에 key, value 쌍을 할당한다.
